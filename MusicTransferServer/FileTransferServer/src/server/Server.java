@@ -25,18 +25,11 @@ public class Server {
 	 */
 	public static void main(String[] args) {
 		
-		SendOutFileStructure send = new SendOutFileStructure(LIB);
+		Thread thread2 = new Thread(new TransferFiles());
+		Thread thread1 = new Thread(new SendOutFileStructure(LIB));
 		
-		Thread thread = new Thread(send);
-
-		thread.start();
-		
-		try {
-			thread.join();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		thread1.start();
+		thread2.start();
 		
 	}
 

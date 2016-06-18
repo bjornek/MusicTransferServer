@@ -82,10 +82,10 @@ public class SendOutFileStructure implements Runnable {
 					albumxml.setAttribute("album_id",album.getName());
 					if(album.isDirectory())
 						for(File track : album.listFiles()){ // Tracks
-
 							Element trackxml = new Element("track");
 							trackxml.setAttribute("track_id",track.getName());
-							trackxml.addContent(new Text(track.getAbsolutePath()));
+							trackxml.setAttribute("size",Long.toString(track.length()));
+							trackxml.addContent(new Text(track.getAbsolutePath().replace("\\", "\\\\")));
 							albumxml.addContent(trackxml);
 						}//END tracks
 
