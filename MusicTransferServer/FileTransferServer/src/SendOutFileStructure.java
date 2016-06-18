@@ -14,7 +14,7 @@ import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
 /**
- * 
+ * This class handles the management of xml indexing and transfering xml files
  * @author Generic Windows User
  *
  */
