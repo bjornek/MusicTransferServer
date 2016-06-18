@@ -1,3 +1,4 @@
+package server;
 import java.io.IOException;
 
 /**
@@ -26,8 +27,17 @@ public class Server {
 		
 		SendOutFileStructure send = new SendOutFileStructure(LIB);
 		
-		
+		Thread thread = new Thread(send);
 
+		thread.start();
+		
+		try {
+			thread.join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 }

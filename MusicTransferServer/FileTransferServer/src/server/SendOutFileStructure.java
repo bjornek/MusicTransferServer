@@ -1,3 +1,5 @@
+package server;
+
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -14,14 +16,14 @@ import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
 /**
- * This class handles the management of xml indexing and transfering xml files
+ * This class handles the management of xml indexing and transferring xml files
  * @author Generic Windows User
  *
  */
 public class SendOutFileStructure implements Runnable {
 
 	private final String XML_LOCATION = "./structure.xml";
-	public final static int SOCKET_PORT = 13267;
+	public final static int SOCKET_PORT = 4711;
 
 	private String libRoot = null;
 
@@ -43,6 +45,7 @@ public class SendOutFileStructure implements Runnable {
 		try {
 			createXMLFile();
 			transfer();
+			//System.exit(0);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -95,8 +98,6 @@ public class SendOutFileStructure implements Runnable {
 		XMLOutputter xmlOutput = new XMLOutputter(Format.getPrettyFormat());
 
 		xmlOutput.output(doc, new FileOutputStream(xmlFile));
-
-		System.out.println("Fingers crossed!");
 
 	}
 
